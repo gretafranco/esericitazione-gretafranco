@@ -1,664 +1,695 @@
-<script>
-	// Image assets from Figma
-	const imgVector = 'https://www.figma.com/api/mcp/asset/ad000da7-e200-4c1e-b174-0f4e4aa131f1';
-	const imgImgCard = 'https://www.figma.com/api/mcp/asset/0d664c53-05ca-45af-98a9-c076f5372afa';
-	const imgImgCard1 = 'https://www.figma.com/api/mcp/asset/f417d7ed-a878-411b-83d9-a972878ddb9f';
-	const imgImgCard2 = 'https://www.figma.com/api/mcp/asset/257180f6-6a7e-493b-a741-19439bb2f26c';
-	const imgImgCard3 = 'https://www.figma.com/api/mcp/asset/dd389874-1f38-46aa-a73c-4d64cf642089';
-	const imgImg = 'https://www.figma.com/api/mcp/asset/dc4ccf26-9660-4e93-9e5e-8d48e40ca093';
-	const imgImg1 = 'https://www.figma.com/api/mcp/asset/ed006915-c1f7-4bde-85d9-49ae91f24e54';
-	const imgImg2 = 'https://www.figma.com/api/mcp/asset/ea5c4b7f-d178-4471-8273-9c37a307c910';
-	const imgImg3 = 'https://www.figma.com/api/mcp/asset/775b0688-c1ec-4f2a-81df-52d4952ca4eb';
-	const imgImg4 = 'https://www.figma.com/api/mcp/asset/e53e60a3-efa8-49a7-86c6-b42edda83f01';
-	const imgImg5 = 'https://www.figma.com/api/mcp/asset/a4c6f65e-2917-4bff-bd81-569e41c55e74';
-	const imgImg6 = 'https://www.figma.com/api/mcp/asset/b4bdceac-be8d-4434-bf11-ac987a45308a';
-	const imgImg7 = 'https://www.figma.com/api/mcp/asset/09a84e3e-32dc-405d-9f96-68af8e37ef9b';
-	const imgImg8 = 'https://www.figma.com/api/mcp/asset/c1a57571-c88c-4526-b6cb-7063c0af3eaf';
-	const imgImg9 = 'https://www.figma.com/api/mcp/asset/4c512bc7-b2ae-4564-8fdb-eda9c9d1061a';
-	const imgImg10 = 'https://www.figma.com/api/mcp/asset/5c32b6c1-b6a7-477a-aa80-e0d536f104b5';
-	const imgImg11 = 'https://www.figma.com/api/mcp/asset/305b6f0f-170f-44fe-afae-198f2ccf2f29';
-	const imgImg12 = 'https://www.figma.com/api/mcp/asset/16cdf74a-f4c2-40a7-9a51-cfdc8eb2e021';
-	const imgImg13 = 'https://www.figma.com/api/mcp/asset/354c6407-fc2a-420a-ad46-351c0fa8781e';
-	const imgImg14 = 'https://www.figma.com/api/mcp/asset/51a414dd-3302-40ae-8701-47c5aed35aa5';
-	const imgVector1 = 'https://www.figma.com/api/mcp/asset/d91fee97-54a0-4f5b-8833-bc579222c7ed';
-	const imgGroup = 'https://www.figma.com/api/mcp/asset/52524880-2678-4440-b65e-41d65045ee43';
-	const imgGroup1 = 'https://www.figma.com/api/mcp/asset/5c94bbd9-fc8a-4432-abd4-843b704b42cb';
-	const imgGroup2 = 'https://www.figma.com/api/mcp/asset/252f16e8-21b1-45a4-b4aa-d0d32efdfad1';
-	const imgGroup3 = 'https://www.figma.com/api/mcp/asset/debb794f-bb1e-4d47-9cd1-5ee3c618fdbe';
-	const imgGroup4 = 'https://www.figma.com/api/mcp/asset/89833299-a0a1-4e80-9f26-1671159ffd47';
-	const imgGroup5 = 'https://www.figma.com/api/mcp/asset/08f2a0bb-cd7d-496b-875c-0a94fc77058b';
-	const imgVector2 = 'https://www.figma.com/api/mcp/asset/e0e8edcb-3490-4682-8764-e29c81995a88';
-	const imgGroup6 = 'https://www.figma.com/api/mcp/asset/c67c2aa4-23fc-4b54-a578-da04bf975e98';
-	const imgGroup7 = 'https://www.figma.com/api/mcp/asset/bdbda7be-85ed-449d-b3f1-67930d019e97';
-	const imgGroup8 = 'https://www.figma.com/api/mcp/asset/927152b7-44d7-49d2-8365-641a0ddf968a';
-	const imgGroup9 = 'https://www.figma.com/api/mcp/asset/5581c322-8090-44c9-8dbd-a62b0c62928c';
-	const imgVector3 = 'https://www.figma.com/api/mcp/asset/8a822edd-0e99-49e7-b055-3544e0736c5a';
-	const imgGroup10 = 'https://www.figma.com/api/mcp/asset/1e988562-049c-4b15-b01c-65d68836d22d';
-	const imgGroup11 = 'https://www.figma.com/api/mcp/asset/42044c0d-c8b4-40fe-8374-2449a30acb09';
-	const imgGroup12 = 'https://www.figma.com/api/mcp/asset/a73b42d3-9610-4a14-8041-ba60bf4daadc';
-	const imgGroup13 = 'https://www.figma.com/api/mcp/asset/ca2f0d69-fde9-46fa-bee7-a8c78572a041';
-	const imgCurveL = 'https://www.figma.com/api/mcp/asset/c55a001c-f4c7-40d9-92eb-1ca07e133140';
-	const imgClose = 'https://www.figma.com/api/mcp/asset/17efb74b-e4f3-4148-a35e-70aa71d2ed6b';
-	const imgCurveR = 'https://www.figma.com/api/mcp/asset/b616d12b-e7d8-44ae-a0c9-f2c695a15ff8';
-	const imgBrowserControls =
-		'https://www.figma.com/api/mcp/asset/9ff1e3cc-cff2-42a1-a0c9-a590c021971c';
-	const imgContainer = 'https://www.figma.com/api/mcp/asset/af306413-fb63-4200-b95b-aeffb81efbd8';
-	const imgContainer1 = 'https://www.figma.com/api/mcp/asset/5dd5c263-be5d-4686-acf5-38693aebc3eb';
-	const imgContainer2 = 'https://www.figma.com/api/mcp/asset/8f2e4af4-c747-4475-b1cf-0454d1cd8be4';
-	const imgBack = 'https://www.figma.com/api/mcp/asset/fefc34cd-a353-4d35-b398-c6bbd9b6c9a8';
-	const imgForward = 'https://www.figma.com/api/mcp/asset/5ca3aef3-092e-4d84-b4da-19816e798d1b';
-	const imgRefresh = 'https://www.figma.com/api/mcp/asset/8cc9d17f-3289-43ff-84ba-5a5d9baee6b4';
-	const imgHome = 'https://www.figma.com/api/mcp/asset/8331cf84-59b9-4dcc-9cd5-5ce97e1a917e';
-	const imgIconFileFolderOpen24Px =
-		'https://www.figma.com/api/mcp/asset/8a927ce8-2dcc-4273-8d23-9be9b91c709b';
-	const imgVector4 = 'https://www.figma.com/api/mcp/asset/1fac7cff-142d-4644-bb08-4828b4819e50';
-	const imgVector5 = 'https://www.figma.com/api/mcp/asset/a5fb8027-f3d4-4497-b081-6d3061f67018';
+<script lang="ts">
+    import { onMount } from 'svelte';
+    import Card from '$lib/components/Card.svelte';
 
-	const portfolioItems = [
-		{
-			title: 'Il corpo femminile',
-			year: '',
-			description:
-				'A bulbous armchair inspired by fertility goddess statues, paired with a ball-shaped ottoman symbolising the constraints imposed on women.',
-			category: 'CHAIRS & ARMCHAIRS',
-			image: imgImgCard
-		},
-		{
-			title: 'L\'imperfezione',
-			year: '',
-			description:
-				'The first of the UP Series — a cylindrical foam seat that self-inflates from a flat vacuum-packed sheet, redefining how furniture could be shipped and experienced.',
-			category: 'CHAIRS & ARMCHAIRS',
-			image: imgImgCard1
-		},
-		{
-			title: 'La resina',
-			year: 'Anno',
-			description:
-				'A bulbous armchair inspired by fertility goddess statues, paired with a ball-shaped ottoman symbolising the constraints imposed on women.',
-			category: 'Sezione',
-			image: imgImgCard2
-		},
-		{
-			title: 'Il corpo della città',
-			year: '',
-			description: '',
-			category: '',
-			image: imgImgCard3
-		}
-	];
+    /* --- IMPORT ASSETS DALLA TUA CARTELLA LIB/ASSETS --- */
+    import imgHero from '$lib/assets/immagine-hero.png';
+    import scarabocchioBlu from '$lib/assets/scarabocchio-blu.svg';
+    import scintilleGialle from '$lib/assets/scintille-gialle.svg';
+    import croceRossa from '$lib/assets/croce-rossa.svg';
+    import cerchioVerde from '$lib/assets/cerchio-verde.svg';
 
-	const designWorks = [
-		{
-			title: 'UP5 "La Mamma"',
-			year: '1969',
-			description:
-				'A bulbous armchair inspired by fertility goddess statues, paired with a ball-shaped ottoman symbolising the constraints imposed on women.',
-			category: 'CHAIRS & ARMCHAIRS',
-			image: imgImg
-		},
-		{
-			title: 'UP1',
-			year: '1969',
-			description:
-				'The first of the UP Series — a cylindrical foam seat that self-inflates from a flat vacuum-packed sheet, redefining how furniture could be shipped and experienced.',
-			category: 'CHAIRS & ARMCHAIRS',
-			image: imgImg1
-		},
-		{
-			title: 'I Feltri',
-			year: 'Anno',
-			description:
-				'A bulbous armchair inspired by fertility goddess statues, paired with a ball-shaped ottoman symbolising the constraints imposed on women.',
-			category: 'Sezione',
-			image: imgImg2
-		},
-		{
-			title: 'Dalila I, II, III',
-			year: '1980',
-			description:
-				'A trio of seats with sinuous, anthropomorphic silhouettes — each one a variation on the female form, made in resin and fabric.',
-			category: 'CHAIRS & ARMCHAIRS',
-			image: imgImg3
-		},
-		{
-			title: 'Tramonto a New York',
-			year: '1980',
-			description:
-				'A modular sofa whose skyline-shaped backrest and blazing red semicircle evoke a Manhattan sunset — ironic, cinematic, unmistakably Pesce.',
-			category: 'SOFA & TABLES',
-			image: imgImg4
-		},
-		{
-			title: 'Sit Down',
-			year: '1975',
-			description:
-				'An informal, shapeless sofa that rejects structural rigidity — designed to adapt to the body rather than impose a posture.',
-			category: 'SOFA & TABLES',
-			image: imgImg5
-		},
-		{
-			title: 'Sessantuna',
-			year: '2010',
-			description:
-				'Sixty-one individual tables that, when assembled together, form a human face — a meditation on identity and collective design.',
-			category: 'SOFA & TABLES',
-			image: imgImg6
-		},
-		{
-			title: 'Moloch',
-			year: '1971',
-			description:
-				'A floor lamp scaled up to monumental proportions — a domestic object turned ironic monument, blurring the line between design and sculpture.',
-			category: 'LAMPS & LIGHTING',
-			image: imgImg7
-		},
-		{
-			title: 'Umbrella Lamp',
-			year: '1995',
-			description:
-				'A lamp enclosed inside a translucent umbrella form, playing with the idea of shelter, light, and the uncanny familiarity of everyday objects.',
-			category: 'LAMPS & LIGHTING',
-			image: imgImg8
-		},
-		{
-			title: 'Organic Building',
-			year: '1993',
-			description:
-				'A building facade fitted with protruding plant pockets and an automated irrigation system — one of the earliest examples of a living vertical garden.',
-			category: 'ARCHITECTURE',
-			image: imgImg9
-		},
-		{
-			title: 'Pescetrullo',
-			year: '2008',
-			description:
-				'A house in Puglia built with wooden formwork and polyurethane — an experimental dwelling that treats the home as a sculptural act.',
-			category: 'ARCHITECTURE',
-			image: imgImg10
-		},
-		{
-			title: 'Fish Design — vases',
-			year: '1996',
-			description:
-				'A collection of vases and decorative objects in fibreglass resin, produced by Fish Design — playful, colourful, and proudly non-functional in spirit.',
-			category: 'ART & OBJECTS',
-			image: imgImg11
-		},
-		{
-			title: 'Bottiglia Vittel',
-			year: '1986',
-			description:
-				'A mineral water bottle redesigned as a sculptural object — one of Pesce\'s rare forays into mass-market industrial design with a distinctly artistic sensibility.',
-			category: 'ART & OBJECTS',
-			image: imgImg12
-		},
-		{
-			title: 'Maestà Sofferente',
-			year: '2019',
-			description:
-				'A towering 8-metre figure pierced by arrows and chained to a ball — a brutal, unapologetic statement against violence on women.',
-			category: 'ART & OBJECTS',
-			image: imgImg13
-		},
-		{
-			title: 'Tu si \'na cosa grande',
-			year: '2024',
-			description:
-				'Pesce\'s final work, created as a tribute to Naples — a monumental installation celebrating the city\'s chaotic beauty and cultural resilience.',
-			category: 'ART & OBJECTS',
-			image: imgImg14
-		}
-	];
+    /* --- LOGICA FILTRI (Svelte 5) --- */
+    let activeFilter = $state('ALL WORKS');
+
+    function setFilter(filter: string) {
+        activeFilter = filter;
+    }
+
+    /* --- LOGICA ANIMAZIONE CITAZIONE --- */
+    let currentFrame = $state(0);
+    const totalFrames = 5;
+
+    // Array degli overlay che utilizza gli import corretti
+    const overlays = [
+        null,
+        scarabocchioBlu,
+        scintilleGialle,
+        croceRossa,
+        cerchioVerde
+    ];
+
+    onMount(() => {
+        const interval = setInterval(() => {
+            currentFrame = (currentFrame + 1) % totalFrames;
+        }, 400); // Velocità dell'animazione "Instant" di Figma
+
+        return () => clearInterval(interval);
+    });
+
+    /* --- DATA ASSETS (URL FIGMA) --- */
+    const imgImgCard = 'https://www.figma.com/api/mcp/asset/0d664c53-05ca-45af-98a9-c076f5372afa';
+    const imgImgCard1 = 'https://www.figma.com/api/mcp/asset/f417d7ed-a878-411b-83d9-a972878ddb9f';
+    const imgImgCard2 = 'https://www.figma.com/api/mcp/asset/257180f6-6a7e-493b-a741-19439bb2f26c';
+    const imgImgCard3 = 'https://www.figma.com/api/mcp/asset/dd389874-1f38-46aa-a73c-4d64cf642089';
+    const imgImg = 'https://www.figma.com/api/mcp/asset/dc4ccf26-9660-4e93-9e5e-8d48e40ca093';
+    const imgImg1 = 'https://www.figma.com/api/mcp/asset/ed006915-c1f7-4bde-85d9-49ae91f24e54';
+    const imgImg2 = 'https://www.figma.com/api/mcp/asset/ea5c4b7f-d178-4471-8273-9c37a307c910';
+    const imgImg3 = 'https://www.figma.com/api/mcp/asset/775b0688-c1ec-4f2a-81df-52d4952ca4eb';
+    const imgImg4 = 'https://www.figma.com/api/mcp/asset/e53e60a3-efa8-49a7-86c6-b42edda83f01';
+    const imgImg5 = 'https://www.figma.com/api/mcp/asset/a4c6f65e-2917-4bff-bd81-569e41c55e74';
+    const imgImg6 = 'https://www.figma.com/api/mcp/asset/b4bdceac-be8d-4434-bf11-ac987a45308a';
+    const imgImg7 = 'https://www.figma.com/api/mcp/asset/09a84e3e-32dc-405d-9f96-68af8e37ef9b';
+    const imgImg8 = 'https://www.figma.com/api/mcp/asset/c1a57571-c88c-4526-b6cb-7063c0af3eaf';
+    const imgImg9 = 'https://www.figma.com/api/mcp/asset/4c512bc7-b2ae-4564-8fdb-eda9c9d1061a';
+    const imgImg10 = 'https://www.figma.com/api/mcp/asset/5c32b6c1-b6a7-477a-aa80-e0d536f104b5';
+    const imgImg11 = 'https://www.figma.com/api/mcp/asset/305b6f0f-170f-44fe-afae-198f2ccf2f29';
+    const imgImg12 = 'https://www.figma.com/api/mcp/asset/16cdf74a-f4c2-40a7-9a51-cfdc8eb2e021';
+    const imgImg13 = 'https://www.figma.com/api/mcp/asset/354c6407-fc2a-420a-ad46-351c0fa8781e';
+    const imgImg14 = 'https://www.figma.com/api/mcp/asset/51a414dd-3302-40ae-8701-47c5aed35aa5';
+
+    /* --- PORTFOLIO ITEMS (Corretti con description per TS) --- */
+    const portfolioItems = [
+        { title: 'Il corpo femminile', year: '', category: 'CHAIRS & ARMCHAIRS', image: imgImgCard, description: '' },
+        { title: "L'imperfezione", year: '', category: 'CHAIRS & ARMCHAIRS', image: imgImgCard1, description: '' },
+        { title: 'La resina', year: '', category: 'Sezione', image: imgImgCard2, description: '' },
+        { title: 'Il corpo della città', year: '', category: '', image: imgImgCard3, description: '' }
+    ];
+
+    /* --- DESIGN WORKS --- */
+        /* --- DESIGN WORKS --- */
+    const designWorks = [
+        {
+            title: 'UP5 "La Mamma"',
+            year: '1969',
+            description: 'A bulbous armchair inspired by fertility goddess statues, paired with a ball-shaped ottoman symbolising the constraints imposed on women.',
+            category: 'CHAIRS & ARMCHAIRS',
+            image: imgImg
+        },
+        {
+            title: 'UP1',
+            year: '1969',
+            description: 'The first of the UP Series — a cylindrical foam seat that self-inflates from a flat vacuum-packed sheet, redefining how furniture could be shipped and experienced.',
+            category: 'CHAIRS & ARMCHAIRS',
+            image: imgImg1
+        },
+        {
+            title: 'I Feltri',
+            year: 'Anno',
+            description: 'A bulbous armchair inspired by fertility goddess statues, paired with a ball-shaped ottoman symbolising the constraints imposed on women.',
+            category: 'Sezione',
+            image: imgImg2
+        },
+        {
+            title: 'Dalila I, II, III',
+            year: '1980',
+            description: 'A trio of seats with sinuous, anthropomorphic silhouettes — each one a variation on the female form, made in resin and fabric.',
+            category: 'CHAIRS & ARMCHAIRS',
+            image: imgImg3
+        },
+        {
+            title: 'Tramonto a New York',
+            year: '1980',
+            description: 'A modular sofa whose skyline-shaped backrest and blazing red semicircle evoke a Manhattan sunset — ironic, cinematic, unmistakably Pesce.',
+            category: 'SOFA & TABLES',
+            image: imgImg4
+        },
+        {
+            title: 'Sit Down',
+            year: '1975',
+            description: 'An informal, shapeless sofa that rejects structural rigidity — designed to adapt to the body rather than impose a posture.',
+            category: 'SOFA & TABLES',
+            image: imgImg5
+        },
+        {
+            title: 'Sessantuna',
+            year: '2010',
+            description: 'Sixty-one individual tables that, when assembled together, form a human face — a meditation on identity and collective design.',
+            category: 'SOFA & TABLES',
+            image: imgImg6
+        },
+        {
+            title: 'Moloch',
+            year: '1971',
+            description: 'A floor lamp scaled up to monumental proportions — a domestic object turned ironic monument, blurring the line between design and sculpture.',
+            category: 'LAMPS & LIGHTING',
+            image: imgImg7
+        },
+        {
+            title: 'Umbrella Lamp',
+            year: '1995',
+            description: 'A lamp enclosed inside a translucent umbrella form, playing with the idea of shelter, light, and the uncanny familiarity of everyday objects.',
+            category: 'LAMPS & LIGHTING',
+            image: imgImg8
+        },
+        {
+            title: 'Organic Building',
+            year: '1993',
+            description: 'A building facade fitted with protruding plant pockets and an automated irrigation system — one of the earliest examples of a living vertical garden.',
+            category: 'ARCHITECTURE',
+            image: imgImg9
+        },
+        {
+            title: 'Pescetrullo',
+            year: '2008',
+            description: 'A house in Puglia built with wooden formwork and polyurethane — an experimental dwelling that treats the home as a sculptural act.',
+            category: 'ARCHITECTURE',
+            image: imgImg10
+        },
+        {
+            title: 'Fish Design — vases',
+            year: '1996',
+            description: 'A collection of vases and decorative objects in fibreglass resin, produced by Fish Design — playful, colourful, and proudly non-functional in spirit.',
+            category: 'ART & OBJECTS',
+            image: imgImg11
+        },
+        {
+            title: 'Bottiglia Vittel',
+            year: '1986',
+            description: 'A mineral water bottle redesigned as a sculptural object — one of Pesce\'s rare forays into mass-market industrial design with a distinctly artistic sensibility.',
+            category: 'ART & OBJECTS',
+            image: imgImg12
+        },
+        {
+            title: 'Maestà Sofferente',
+            year: '2019',
+            description: 'A towering 8-metre figure pierced by arrows and chained to a ball — a brutal, unapologetic statement against violence on women.',
+            category: 'ART & OBJECTS',
+            image: imgImg13
+        },
+        {
+            title: 'Tu si \'na cosa grande',
+            year: '2024',
+            description: 'Pesce\'s final work, created as a tribute to Naples — a monumental installation celebrating the city\'s chaotic beauty and cultural resilience.',
+            category: 'ART & OBJECTS',
+            image: imgImg14
+        }
+    ];
+    
+    /* --- FILTER LOGIC (Svelte 5 derived state) --- */
+    let filteredWorks = $derived(
+        activeFilter === 'ALL WORKS' 
+            ? designWorks 
+            : designWorks.filter(work => work.category === activeFilter)
+    );
 </script>
 
 <style>
-	:global(body) {
-		margin: 0;
-		padding: 0;
-		background-color: var(--color-background-primary);
-		font-family: var(--font-family-primary);
-		color: var(--color-content-primary);
-	}
+    :global(body) {
+        margin: 0;
+        padding: 0;
+        background-color: var(--color-background-primary);
+        font-family: var(--font-family-primary);
+        color: var(--color-content-primary);
+    }
 
-	.container {
-		background-color: var(--color-background-primary);
-		min-height: 100vh;
-		width: 100%;
-		position: relative;
-	}
+    .container {
+        background-color: var(--color-background-primary);
+        min-height: 100vh;
+        width: 100%;
+        position: relative;
+    }
 
-	.browser-chrome {
-		background-color: var(--color-background-primary);
-		height: 112px;
-		width: 100%;
-		border-bottom: 1px solid #e0e0e0;
-	}
+    /* HERO */
+    .hero-section {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
 
-	.browser-toolbar {
-		background-color: var(--color-background-primary);
-		height: 42px;
-		display: flex;
-		align-items: center;
-		padding: 0 12px;
-		border-bottom: 1px solid #e0e0e0;
-	}
+    .hero-section img {
+        width: 100%;
+        height: auto;
+        display: block;
+        mix-blend-mode: multiply;
+    }
 
-	.browser-url {
-		background-color: var(--color-background-secondary);
-		height: 70px;
-		display: flex;
-		align-items: center;
-		padding: 0 12px;
-	}
+    .main-title {
+        font-size: clamp(80px, 15vw, 262px);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-content-primary);
+        margin-top: -0.235em;
+        line-height: 1;
+        white-space: nowrap;
+        padding-left: 15px;
+        position: relative;
+    }
 
-	.hero-section {
-		height: 846px;
-		overflow: hidden;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+    /* NAVBAR */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing-5) var(--spacing-9);
+    }
 
-	.hero-content {
-		position: relative;
-		width: 800px;
-		height: 520px;
-	}
+    .navbar-brand {
+        font-size: var(--font-size-h3);
+        font-weight: var(--font-weight-semibold);
+    }
 
-	.hero-image {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-	}
+    .navbar-links {
+        display: flex;
+        gap: var(--spacing-5);
+    }
 
-	.navbar {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: var(--spacing-5) var(--spacing-9);
-		background-color: var(--color-background-primary);
-	}
+    .navbar-link {
+        text-decoration: none;
+        color: inherit;
+        font-size: var(--font-size-h3);
+    }
 
-	.navbar-brand {
-		font-size: var(--font-size-h3);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-content-primary);
-		letter-spacing: var(--letter-spacing-default);
-	}
+	    /* SECTIONS */
+    .section {
+        padding: var(--spacing-11) var(--spacing-9) var(--spacing-12);
+        background-color: var(--color-background-primary);
+    }
 
-	.navbar-links {
-		display: flex;
-		gap: var(--spacing-5);
-		align-items: center;
-	}
+    .section-title {
+        font-size: var(--font-size-h3);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-content-primary);
+        margin-bottom: var(--spacing-5);
+        text-transform: uppercase;
+        letter-spacing: var(--letter-spacing-default);
+    }
 
-	.navbar-link {
-		font-size: var(--font-size-h3);
-		color: var(--color-content-primary);
-		text-decoration: none;
-		cursor: pointer;
-		transition: color 0.3s ease;
-	}
+    .section-description {
+        font-size: var(--unit-48);
+        font-weight: var(--font-weight-medium);
+        line-height: var(--line-height-h2);
+        color: var(--color-content-primary);
+        max-width: 1182px;
+        margin-bottom: var(--spacing-12);
+    }
 
-	.navbar-link:hover {
-		color: var(--color-accent-primary);
-	}
+    /* ANIMATED QUOTE SECTION */
+    .quote-container {
+        padding: var(--spacing-12) var(--spacing-9);
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+    }
 
-	.section {
-		padding: var(--spacing-11) var(--spacing-9) var(--spacing-12);
-		background-color: var(--color-background-primary);
-	}
+    .section-quote {
+        position: relative;
+        font-family: var(--font-family-font1);
+        font-size: var(--font-size-citazione-desktop);
+        font-weight: var(--font-weight-medium);
+        line-height: var(--line-height-citazione-desktop);
+        text-align: right;
+        max-width: 1316px;
+        margin: 0;
+    }
 
-	.section-title {
-		font-size: var(--font-size-h3);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-content-primary);
-		margin-bottom: var(--spacing-5);
-		text-transform: uppercase;
-		letter-spacing: var(--letter-spacing-default);
-	}
+	.word-wrapper {
+        position: relative;
+        display: inline-block; /* Fondamentale per contenere l'absolute */
+    }
 
-	.section-description {
-		font-size: var(--unit-48);
-		font-weight: var(--font-weight-medium);
-		line-height: var(--line-height-h2);
-		color: var(--color-content-primary);
-		max-width: 1182px;
-		margin-bottom: var(--spacing-12);
-	}
+    .overlay-animation {
+        position: absolute;
+        pointer-events: none;
+        z-index: 2;
+        /* Rimuovi i valori generici top/left da qui */
+    }
 
-	.section-quote {
-		font-size: var(--font-size-citazione-desktop);
-		font-weight: var(--font-weight-medium);
-		line-height: var(--line-height-citazione-desktop);
-		color: var(--color-content-primary);
-		text-align: right;
-		margin: var(--spacing-12) 0;
-		max-width: 1316px;
-	}
+    /* Regola questi valori guardando il tuo design su Figma */
+    .frame-1 { 
+    /* Aumenta 'top' per scendere (es. da 30px a 50px o più) */
+    top: 3065px; 
+    
+    /* Centra lo scarabocchio se diventa molto grande */
+    left: 80%;
+    transform: translateX(-30%); 
+    
+    /* Aumenta la dimensione (es. da 180% a 250%) */
+    width: 450%; 
+}
+    .frame-2 { 
+        top: -5px; 
+        left: 20%;
+        width: 800%; /* Le scintille gialle sopra 'bellezza' */
+    } 
 
-	.filters {
-		display: flex;
-		gap: var(--spacing-5);
-		padding: var(--spacing-11) var(--spacing-9) var(--spacing-12);
-		overflow-x: auto;
-		background-color: var(--color-background-primary);
-	}
+    .frame-3 { 
+        top: 10px; 
+        left: -10px; 
+        width: 50px; /* La X rossa sopra 'impe...' */
+    } 
 
-	.filter-button {
-		padding: 6px 20px;
-		border-radius: var(--radius-full);
-		border: none;
-		font-size: var(--font-size-h3);
-		font-weight: var(--font-weight-semibold);
-		cursor: pointer;
-		white-space: nowrap;
-		transition: all 0.3s ease;
-		background-color: transparent;
-		color: var(--color-filter-text-default);
-	}
+    .frame-4 { 
+        top: -15px; 
+        left: -5px; 
+        width: 120%; /* Il cerchio verde attorno a 'idea' */
+    }
 
-	.filter-button.active {
-		background-color: var(--color-filter-background-selected);
-		color: var(--color-filter-text-selected);
-	}
+        /* --- ANIMAZIONE SULLA CITAZIONE - POSIZIONAMENTI SISTEMATI --- */
+    .overlay-animation {
+        position: absolute;
+        pointer-events: none;
+        z-index: 2;
+        width: auto; 
+        height: auto;
+        max-width: none;
+    }
 
-	.portfolio-grid {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap: var(--spacing-5);
-		padding: var(--spacing-5) var(--spacing-9);
-		background-color: var(--color-background-primary);
-	}
+       /* 1. SCARABOCCHIO BLU - Versione con top invece di bottom */
+    .frame-1 { 
+        position: absolute;
+        top: 140px;
+        left: 80px;
+        width: 300px;
+        height: auto;
+        pointer-events: none;
+        z-index: 10;
+    }
 
-	.portfolio-card {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-	}
+    /* 2. SCINTILLE GIALLE - sopra "bellezza" (PIÙ GRANDE) */
+    .frame-2 { 
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-5px);
+        width: 45vw;       /* Aumentato da 25vw a 45vw */
+        min-width: 520px;  /* Aumentato da 150px a 250px */
+        max-width: 770px;  /* Aumentato da 350px a 500px */
+    }
 
-	.portfolio-image {
-		width: 100%;
-		aspect-ratio: 378 / 500;
-		object-fit: cover;
-		background-color: #e0e0e0;
-	}
+       /* 3. CROCE ROSSA - PIÙ GRANDE e PIÙ A DESTRA */
+    .frame-3 { 
+        position: absolute;
+        bottom: 100%;
+        right: -100px;        
+        transform: translateY(-5px);
+        width: 180px;         /* Più grande (da 120 a 180) */
+        height: auto;
+        pointer-events: none;
+        z-index: 10;
+    }
 
-	.portfolio-card-title {
-		font-size: var(--font-size-h3);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-content-primary);
-	}
+    /* 4. CERCHIO VERDE - intorno a "idea" */
+    .frame-4 { 
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.2);
+        width: 100%;
+        height: auto;
+        min-width: 100px;
+    }
 
-	.design-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: var(--spacing-8) var(--spacing-5);
-		padding: var(--spacing-11) var(--spacing-9);
-		background-color: var(--color-background-primary);
-	}
 
-	.design-card {
-		display: flex;
-		flex-direction: column;
-		gap: 0;
-		position: relative;
-	}
+    /* FILTERS */
+    .filters {
+        display: flex;
+        gap: var(--spacing-2);
+        padding: 40px var(--spacing-9) 0px;
+        overflow-x: auto;
+    }
 
-	.design-card-content {
-		padding: var(--spacing-4) var(--spacing-5);
-		position: relative;
-		z-index: 2;
-		background-color: var(--color-background-primary);
-	}
+    .filter-button {
+        padding: 10px 24px;
+        border-radius: var(--radius-full);
+        border: none;
+        cursor: pointer;
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-h3);
+        font-weight: var(--font-weight-semibold);
+        text-transform: uppercase;
+        background-color: transparent;
+        transition: all 0.2s ease;
+    }
 
-	.design-card-image {
-		width: 100%;
-		aspect-ratio: 664 / 401;
-		object-fit: cover;
-		background-color: #e0e0e0;
-	}
+    .filter-button:hover { background-color: var(--color-background-secondary); }
 
-	.design-card-title {
-		font-size: var(--font-size-h3);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-content-primary);
-		margin-bottom: 6px;
-	}
+    .filter-button.active {
+        background-color: var(--color-filter-background-selected) !important;
+        color: var(--color-filter-text-selected) !important;
+    }
 
-	.design-card-year {
-		font-size: var(--font-size-h3);
-		font-weight: var(--font-weight-regular);
-		color: var(--color-content-primary);
-		margin-bottom: 6px;
-	}
+    /* GRIDS */
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-5);
+        padding: var(--spacing-5) var(--spacing-9);
+    }
 
-	.design-card-description {
-		font-size: var(--font-size-h4);
-		font-weight: var(--font-weight-regular);
-		line-height: var(--line-height-h4-h5);
-		color: var(--color-content-primary);
-	}
+    .design-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-8) var(--spacing-5);
+        padding: var(--spacing-9) var(--spacing-9) var(--spacing-11);
+    }
 
-	.design-card-category {
-		font-size: var(--font-size-h4-h5);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-content-secondary);
-		position: absolute;
-		top: 0;
-		right: 0;
-	}
+	    /* PORTFOLIO GRID */
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-5);
+        padding: var(--spacing-5) var(--spacing-9);
+        background-color: var(--color-background-primary);
+    }
 
-	.footer {
-		padding: var(--spacing-11) var(--spacing-9) var(--spacing-12);
-		background-color: var(--color-background-primary);
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		gap: var(--spacing-9);
-	}
+    .portfolio-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
 
-	.footer-section h2 {
-		font-size: var(--unit-48);
-		font-weight: var(--font-weight-medium);
-		line-height: var(--line-height-h2);
-		color: var(--color-content-primary);
-		margin: 0 0 190px 0;
-	}
+    .portfolio-card:hover .portfolio-card-title {
+        color: var(--color-accent-primary);
+        transition: color 0.3s ease;
+    }
 
-	.footer-section p {
-		font-size: var(--font-size-h3);
-		color: var(--color-content-primary);
-		margin: 0;
-	}
+    .portfolio-image {
+        width: 100%;
+        aspect-ratio: 378 / 500;
+        object-fit: cover;
+        background-color: #e0e0e0;
+    }
 
-	.main-title {
-		font-size: 262px;
-		font-weight: var(--font-weight-medium);
-		color: var(--color-content-primary);
-		margin: 0;
-		line-height: 1;
-		white-space: nowrap;
-	}
+    .portfolio-card-title {
+        font-size: var(--font-size-h3);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-content-primary);
+    }
 
-	@media (max-width: 1024px) {
-		.portfolio-grid {
-			grid-template-columns: repeat(2, 1fr);
-		}
+    /* DESIGN GRID */
+    .design-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-8) var(--spacing-5);
+        padding: var(--spacing-9) var(--spacing-9) var(--spacing-11);
+        background-color: var(--color-background-primary);
+    }
 
-		.design-grid {
-			grid-template-columns: repeat(2, 1fr);
-		}
+    .design-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: relative;
+    }
 
-		.footer {
-			grid-template-columns: 1fr 1fr;
-		}
-	}
+    .design-card-content {
+        padding: var(--spacing-4) var(--spacing-5);
+        position: relative;
+        z-index: 2;
+        background-color: var(--color-background-primary);
+    }
 
-	@media (max-width: 640px) {
-		.portfolio-grid {
-			grid-template-columns: 1fr;
-		}
+    .design-card-image {
+        width: 100%;
+        aspect-ratio: 664 / 401;
+        object-fit: cover;
+        background-color: #e0e0e0;
+    }
 
-		.design-grid {
-			grid-template-columns: 1fr;
-		}
+    .design-card-title {
+        font-size: var(--font-size-h3);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-content-primary);
+        margin-bottom: 6px;
+    }
 
-		.footer {
-			grid-template-columns: 1fr;
-		}
+    .design-card-year {
+        font-size: var(--font-size-h3);
+        font-weight: var(--font-weight-regular);
+        color: var(--color-content-primary);
+        margin-bottom: 6px;
+    }
 
-		.section {
-			padding: var(--spacing-12) var(--spacing-5);
-		}
+    .design-card-description {
+        font-size: var(--font-size-h4);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--line-height-h4-h5);
+        color: var(--color-content-primary);
+    }
 
-		.navbar {
-			padding: var(--spacing-5) var(--spacing-5);
-			flex-direction: column;
-			gap: var(--spacing-5);
-		}
+    .design-card-category {
+        font-size: var(--font-size-h4-h5);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-content-secondary);
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 
-		.main-title {
-			font-size: 80px;
-		}
+    /* FOOTER */
+       /* FOOTER */
+    .footer {
+        padding: var(--spacing-11) var(--spacing-9) var(--spacing-12);
+        background-color: var(--color-background-primary);
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: var(--spacing-9);
+    }
 
-		.section-quote {
-			font-size: var(--font-size-citazione-desktop);
-		}
-	}
+    .footer-section h2 {
+        font-size: var(--unit-48);
+        font-weight: var(--font-weight-medium);
+        line-height: var(--line-height-h2);
+        color: var(--color-content-primary);
+        margin: 0 0 32px 0;
+    }
+
+    .footer-section p {
+        font-size: var(--font-size-h3);
+        color: var(--color-content-primary);
+        margin: 0 0 16px 0;
+        line-height: 1.5;
+    }
+
+    .footer-section a {
+        color: var(--color-content-primary);
+        text-decoration: none;
+    }
+
+    .footer-section a:hover {
+        color: var(--color-accent-primary);
+    }
+
+    @media (max-width: 1024px) {
+        .portfolio-grid, .design-grid, .footer { grid-template-columns: repeat(2, 1fr); }
+    }
 </style>
 
-<div class="container">
-	<!-- Browser Chrome -->
-	<div class="browser-chrome">
-		<div class="browser-toolbar">
-			<div style="display: flex; gap: 15px; align-items: center;">
-				<img src={imgBack} alt="back" style="width: 16px; height: 16px;" />
-				<img src={imgForward} alt="forward" style="width: 16px; height: 16px;" />
-				<img src={imgRefresh} alt="refresh" style="width: 16px; height: 16px;" />
-				<img src={imgHome} alt="home" style="width: 16px; height: 16px;" />
-			</div>
-		</div>
-		<div class="browser-url">
-			<div style="flex: 1; display: flex; align-items: center; justify-content: flex-start; gap: var(--spacing-5);">
-				<img src={imgIconFileFolderOpen24Px} alt="folder" style="width: 18px; height: 18px;" />
-				<span style="font-size: 10px;">News</span>
-				<span style="display: flex; gap: 4px; align-items: center;">
-					<img src={imgIconFileFolderOpen24Px} alt="folder" style="width: 18px; height: 18px;" />
-					<span style="font-size: 10px;">Design</span>
-				</span>
-				<span style="display: flex; gap: 4px; align-items: center;">
-					<img src={imgIconFileFolderOpen24Px} alt="folder" style="width: 18px; height: 18px;" />
-					<span style="font-size: 10px;">Benchmark</span>
-				</span>
-			</div>
-		</div>
-	</div>
+<div class="container"> 
+    <nav class="navbar">
+        <div class="navbar-brand">GAETANO PESCE</div>
+        <div class="navbar-links">
+            <a href="#archive" class="navbar-link">ARCHIVIO</a>
+            <a href="#contact" class="navbar-link">@gretafranco.design</a>
+        </div>
+    </nav>
 
-	<!-- Navbar -->
-	<nav class="navbar">
-		<div class="navbar-brand">GAETANO PESCE</div>
-		<div class="navbar-links">
-			<a href="#archive" class="navbar-link">ARCHIVIO</a>
-			<a href="#contact" class="navbar-link">@gretafranco.design</a>
-		</div>
-	</nav>
+    <section class="hero-section">
+        <img src={imgHero} alt="Gaetano Pesce Hero" />
+        <div class="main-title">GAETANO PESCE</div>
+    </section>
 
-	<!-- Hero Section -->
-	<section class="hero-section">
-		<div class="hero-content">
-			<img src={imgVector1} alt="Gaetano Pesce Hero" style="width: 100%; height: 100%;" />
-		</div>
-	</section>
-
-	<!-- Main Title -->
-	<div style="padding: 40px var(--spacing-9); font-size: 262px; font-weight: var(--font-weight-medium); color: var(--color-content-primary);">
-		GAETANO PESCE
-	</div>
-
-	<!-- Introduction Section -->
-	<div class="section">
-		<h2 class="section-title">DESIGNER · ARCHITECT · VISIONARY — VENICE, 1939</h2>
-		<p class="section-description">
-			Gaetano Pesce didn't design objects — he designed provocations. For over six decades, he turned
-			resin, polyurethane foam and sheer audacity into furniture that asked uncomfortable questions:
-			about identity, about mass production, about what a chair is even allowed to feel like.
-		</p>
-	</div>
-
-	<!-- Portfolio Cards -->
-	<div class="portfolio-grid">
-		{#each portfolioItems as item}
-			<div class="portfolio-card">
-				<img src={item.image} alt={item.title} class="portfolio-image" />
-				<div style="display: flex; gap: 3px; align-items: center;">
-					<h3 class="portfolio-card-title">{item.title}</h3>
-					{#if item.year}
-						<span style="font-size: var(--font-size-h3); color: var(--color-content-primary);">{item.year}</span>
-					{/if}
-				</div>
-			</div>
-		{/each}
-	</div>
-
-	<!-- Quote Section -->
-	<div style="padding: var(--spacing-12) var(--spacing-9);">
-		<p class="section-quote">La mia idea della bellezza è l'imperfezione.</p>
-	</div>
-
-	<!-- Filters -->
-	<div class="filters">
-		<button class="filter-button active">ALL WORKS</button>
-		<button class="filter-button">CHAIRS & ARMCHAIRS</button>
-		<button class="filter-button">SOFA & TABLES</button>
-		<button class="filter-button">LAMPS & LIGHTING</button>
-		<button class="filter-button">ARCHITECTURE</button>
-		<button class="filter-button">ART & OBJECTS</button>
-	</div>
-
-	<!-- Design Works Grid -->
-	<div class="design-grid">
-		{#each designWorks as work}
-			<div class="design-card">
-				<div class="design-card-content">
-					<div class="design-card-category">{work.category}</div>
-					<h3 class="design-card-title">{work.title}</h3>
-					<p class="design-card-year">{work.year}</p>
-					<p class="design-card-description">{work.description}</p>
-				</div>
-				<img src={work.image} alt={work.title} class="design-card-image" />
-			</div>
-		{/each}
-	</div>
-
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-section">
-        <h2>Laboratorio di Web<br />e Digital Design</h2>
-        <p>Design della Comunicazione<br />Politecnico di Milano</p>
-        <br />
-        <p>Prof. Umberto Tolino<br />Prof. Christian Mazzoleni</p>
-    </div>
-    <div class="footer-section">
-        <h2>Let's get<br />in Touch</h2>
-        <p>
-            Greta Franco<br />
-            <a href="mailto:greta.franco@mail.polimi.it">greta.franco@mail.polimi.it</a><br />
-            @gretafranco.design
+        <div class="section">
+        <h2 class="section-title">DESIGNER · ARCHITECT · VISIONARY — VENICE, 1939</h2>
+        <p class="section-description">
+            Gaetano Pesce didn't design objects — he designed provocations. For over six decades, he turned
+            resin, polyurethane foam and sheer audacity into furniture that asked uncomfortable questions:
+            about identity, about mass production, about what a chair is even allowed to feel like.
         </p>
     </div>
-    <div class="footer-section">
-        <h2>Project's<br />Credits</h2>
-        <p>
-            Gaetano Pesce<br />
-            <a href="https://www.corsidesign.it/gaetano-pesce">https://www.corsidesign.it/gaetano-pesce</a><br />
-            <a href="https://shop.mohd.it/en">https://shop.mohd.it/en</a><br />
-            All images belong to their respective owners.
-        </p>
+
+        <!-- Portfolio Cards -->
+    <div class="portfolio-grid">
+        {#each portfolioItems as item}
+            <div class="portfolio-card">
+                <img src={item.image} alt={item.title} class="portfolio-image" />
+                <div style="display: flex; gap: 3px; align-items: center;">
+                    <h3 class="portfolio-card-title">{item.title}</h3>
+                    {#if item.year}
+                        <span style="font-size: var(--font-size-h3); color: var(--color-content-primary);">{item.year}</span>
+                    {/if}
+                </div>
+            </div>
+        {/each}
     </div>
-    <div style="grid-column: 1 / -1; border-top: 1px solid currentColor; padding-top: var(--spacing-5);">
-        <p style="margin: 0; font-size: var(--font-size-h4);">© 2026 Greta Franco · All rights reserved</p>
-        <p style="margin: 0; font-size: var(--font-size-h4);">Progetto realizzato per Laboratorio di Web & Digital Design — PoliMi</p>
+
+    <div class="quote-container">
+       <p class="section-quote">
+    La 
+    <span class="word-wrapper">
+        mia 
+        {#if currentFrame === 1}
+            <img src={overlays[1]} class="overlay-animation frame-1" alt=""/>
+        {/if}
+    </span> 
+
+    <span class="word-wrapper">
+        idea 
+        {#if currentFrame === 4}
+            <img src={overlays[4]} class="overlay-animation frame-4" alt=""/>
+        {/if}
+    </span> 
+    <br>
+
+    della 
+    <span class="word-wrapper">
+        bellezza 
+        {#if currentFrame === 2}
+            <img src={overlays[2]} class="overlay-animation frame-2" alt=""/>
+        {/if}
+    </span> 
+    è <br>
+
+    <span class="word-wrapper">
+        l'imperfezione.
+        {#if currentFrame === 3}
+            <img src={overlays[3]} class="overlay-animation frame-3" alt=""/>
+        {/if}
+    </span>
+</p>
     </div>
-</footer>
+
+    <div class="filters">
+        {#each ['ALL WORKS', 'CHAIRS & ARMCHAIRS', 'SOFA & TABLES', 'LAMPS & LIGHTING', 'ARCHITECTURE', 'ART & OBJECTS'] as filter}
+            <button
+                class="filter-button"
+                class:active={activeFilter === filter}
+                on:click={() => setFilter(filter)}
+            >
+                {filter}
+            </button>
+        {/each}
+    </div>
+
+        <!-- Design Works Grid -->
+    <div class="design-grid">
+        {#each filteredWorks as work}
+            <div class="design-card">
+                <div class="design-card-content">
+                    <div class="design-card-category">{work.category}</div>
+                    <h3 class="design-card-title">{work.title}</h3>
+                    <p class="design-card-year">{work.year}</p>
+                    <p class="design-card-description">{work.description}</p>
+                </div>
+                <img src={work.image} alt={work.title} class="design-card-image" />
+            </div>
+        {/each}
+    </div>
+
+        <footer class="footer">
+        <div class="footer-section">
+            <h2>Laboratorio di Web<br />e Digital Design</h2>
+            <p>Design della Comunicazione<br />Politecnico di Milano</p>
+            <p>Prof. Umberto Tolino<br />Prof. Christian Mazzoleni</p>
+        </div>
+        <div class="footer-section">
+            <h2>Let's get<br />in Touch</h2>
+            <p>
+                Greta Franco<br />
+                <a href="mailto:greta.franco@mail.polimi.it">greta.franco@mail.polimi.it</a><br />
+                <a href="https://www.instagram.com/gretafranco.design/" target="_blank">@gretafranco.design</a>
+            </p>
+        </div>
+        <div class="footer-section">
+            <h2>Project's<br />Credits</h2>
+            <p>
+                Gaetano Pesce<br />
+                <a href="https://www.corsidesign.it/gaetano-pesce">https://www.corsidesign.it/gaetano-pesce</a><br />
+                <a href="https://shop.mohd.it/en">https://shop.mohd.it/en</a><br />
+                All images belong to their respective owners.
+            </p>
+        </div>
+        <div style="grid-column: 1 / -1; border-top: 1px solid currentColor; padding-top: var(--spacing-5);">
+            <p style="margin: 0; font-size: var(--font-size-h4);">© 2026 Greta Franco · All rights reserved</p>
+            <p style="margin: 0; font-size: var(--font-size-h4);">Progetto realizzato per Laboratorio di Web & Digital Design — PoliMi</p>
+        </div>
+    </footer>
 </div>
