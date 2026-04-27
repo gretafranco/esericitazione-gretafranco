@@ -464,7 +464,7 @@
         color: var(--color-content-primary);
     }
 
-    /* DESIGN GRID */
+ /* DESIGN GRID AGGIORNATA */
     .design-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -478,13 +478,27 @@
         flex-direction: column;
         gap: 0;
         position: relative;
+        /* Linea sinistra spessa */
+        border-left: 2px solid transparent; 
+        transition: border-color 0.3s ease;
+        padding: var(--spacing-4) 0; /* Padding verticale per distanziare le card */
+    }
+
+    .design-card:hover {
+        border-left: 2px solid var(--color-content-primary);
+    }
+
+    /* Container unico per testo e immagine con lo stesso rientro */
+    .design-card-inner {
+        padding: 0 var(--spacing-5); /* Questo crea lo spazio vuoto a DX e SX */
+        display: flex;
+        flex-direction: column;
     }
 
     .design-card-content {
-        padding: var(--spacing-4) var(--spacing-5);
         position: relative;
         z-index: 2;
-        background-color: var(--color-background-primary);
+        width: 100%;
     }
 
     .design-card-image {
@@ -492,6 +506,8 @@
         aspect-ratio: 664 / 401;
         object-fit: cover;
         background-color: #e0e0e0;
+        display: block;
+        margin-top: var(--spacing-4); /* Spazio tra descrizione e foto */
     }
 
     .design-card-title {
@@ -499,6 +515,11 @@
         font-weight: var(--font-weight-semibold);
         color: var(--color-content-primary);
         margin-bottom: 6px;
+        transition: color 0.3s ease;
+    }
+
+    .design-card:hover .design-card-title {
+        color: #f6392b;
     }
 
     .design-card-year {
@@ -513,6 +534,7 @@
         font-weight: var(--font-weight-regular);
         line-height: var(--line-height-h4-h5);
         color: var(--color-content-primary);
+        padding-right: 30px; /* Spazio per la freccia */
     }
 
     .design-card-category {
@@ -521,13 +543,27 @@
         color: var(--color-content-secondary);
         position: absolute;
         top: 0;
+        right: 0; /* Allineato al margine interno del padding-5 */
+    }
+
+    .arrow-icon {
+        position: absolute;
+        bottom: 4px;
         right: 0;
+        width: 18px;
+        height: 18px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .design-card:hover .arrow-icon {
+        opacity: 1;
     }
 
     /* FOOTER */
        /* FOOTER */
     .footer {
-        padding: var(--spacing-11) var(--spacing-9) var(--spacing-12);
+        padding: var(--spacing-5) var(--spacing-9) var(--spacing-12);
         background-color: var(--color-background-primary);
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -650,19 +686,32 @@
     </div>
 
         <!-- Design Works Grid -->
-    <div class="design-grid">
-        {#each filteredWorks as work}
-            <div class="design-card">
+   <div class="design-grid">
+    {#each filteredWorks as work}
+        <div class="design-card">
+            <div class="design-card-inner">
                 <div class="design-card-content">
                     <div class="design-card-category">{work.category}</div>
                     <h3 class="design-card-title">{work.title}</h3>
                     <p class="design-card-year">{work.year}</p>
-                    <p class="design-card-description">{work.description}</p>
+                    
+                    <div style="position: relative;">
+                        <p class="design-card-description">{work.description}</p>
+                        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 7L17 17M17 17V7M17 17H7" 
+                                  stroke="black" 
+                                  stroke-width="2" 
+                                  stroke-linecap="round" 
+                                  stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                 </div>
+                
                 <img src={work.image} alt={work.title} class="design-card-image" />
             </div>
-        {/each}
-    </div>
+        </div>
+    {/each}
+</div>
 
         <footer class="footer">
         <div class="footer-section">
