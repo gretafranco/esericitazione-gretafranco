@@ -243,12 +243,17 @@
         gap: var(--spacing-5);
     }
 
+    /* NAVBAR LINKS AGGIORNATI */
     .navbar-link {
         text-decoration: none;
         color: inherit;
         font-size: var(--font-size-h3);
+        transition: color 0.3s ease; /* Rende il passaggio al rosso fluido */
     }
 
+    .navbar-link:hover {
+        color: #f6392b; /* Il rosso Gaetano Pesce */
+    }
 	    /* SECTIONS */
     .section {
         padding: var(--spacing-11) var(--spacing-9) var(--spacing-12);
@@ -371,7 +376,7 @@
         bottom: 100%;
         right: -100px;        
         transform: translateY(-5px);
-        width: 180px;         /* Più grande (da 120 a 180) */
+        width: 200px;         /* Più grande (da 120 a 180) */
         height: auto;
         pointer-events: none;
         z-index: 10;
