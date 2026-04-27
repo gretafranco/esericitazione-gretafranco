@@ -1,0 +1,236 @@
+/* ===================================
+   DESIGN TOKENS - GAETANO PESCE
+   Generated from Figma Design System
+   =================================== */
+
+:root {
+	/* ========== COLORS ========== */
+	/* Content Colors */
+	--color-content-primary: #202426;
+	--color-content-secondary: #7d8e93;
+
+	/* Background Colors */
+	--color-background-primary: #fafafa;
+	--color-background-secondary: #ebeeef;
+
+	/* Link Colors */
+	--color-link-default: #202426;
+
+	/* Filter Colors */
+	--color-filter-background-selected: #f6392b;
+	--color-filter-text-selected: #fafafa;
+	--color-filter-text-default: #202426;
+
+	/* Accent Colors */
+	--color-accent-primary: #f6392b;
+	--color-sunset: transparent;
+
+	/* ========== SPACING ========== */
+	--spacing-0: 0px;
+	--spacing-4: 16px;
+	--spacing-5: 24px;
+	--spacing-7: 40px;
+	--spacing-8: 56px;
+	--spacing-9: 72px;
+	--spacing-11: 160px;
+	--spacing-12: 80px;
+
+	/* ========== RADIUS ========== */
+	--radius-none: 0px;
+	--radius-m: 16px;
+	--radius-full: 999px;
+
+	/* ========== UNITS ========== */
+	--unit-48: 48px;
+
+	/* ========== TYPOGRAPHY - FONT FAMILIES ========== */
+	--font-family-primary: 'degular-display', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+		Roboto, sans-serif;
+	--font-family-font1: 'degular-display', sans-serif;
+
+	/* ========== TYPOGRAPHY - FONT SIZES ========== */
+	--font-size-h2: 48px;
+	--font-size-h3: 24px;
+	--font-size-h4: 20px;
+	--font-size-h4-h5: 16px;
+	--font-size-citazione-desktop: 220px;
+
+	/* ========== TYPOGRAPHY - FONT WEIGHTS ========== */
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+
+	/* ========== TYPOGRAPHY - LINE HEIGHTS ========== */
+	--line-height-normal: 1;
+	--line-height-tight: 1;
+	--line-height-h4-h5: 20px;
+	--line-height-h2: 52px;
+	--line-height-citazione-desktop: 200px;
+
+	/* ========== TYPOGRAPHY - LETTER SPACING ========== */
+	--letter-spacing-default: 0;
+	--letter-spacing-tight: 0.2px;
+
+	/* ========== RESPONSIVE BREAKPOINTS ========== */
+	--breakpoint-tablet: 1024px;
+	--breakpoint-mobile: 640px;
+}
+
+/* ========== SEMANTIC TYPOGRAPHY ========== */
+
+/* h2 - Medium, 48px */
+.typography-h2 {
+	font-family: var(--font-family-primary);
+	font-size: var(--font-size-h2);
+	font-weight: var(--font-weight-medium);
+	line-height: var(--line-height-h2);
+	letter-spacing: var(--letter-spacing-default);
+}
+
+/* h3/1 - Semibold, 24px */
+.typography-h3-semibold {
+	font-family: var(--font-family-primary);
+	font-size: var(--font-size-h3);
+	font-weight: var(--font-weight-semibold);
+	line-height: 100%;
+	letter-spacing: var(--letter-spacing-default);
+}
+
+/* h3/2 - Regular, 24px */
+.typography-h3-regular {
+	font-family: var(--font-family-primary);
+	font-size: var(--font-size-h3);
+	font-weight: var(--font-weight-regular);
+	line-height: 100%;
+	letter-spacing: var(--letter-spacing-default);
+}
+
+/* h4/1 - Regular, 20px */
+.typography-h4 {
+	font-family: var(--font-family-primary);
+	font-size: var(--font-size-h4);
+	font-weight: var(--font-weight-regular);
+	line-height: var(--line-height-h4-h5);
+	letter-spacing: var(--letter-spacing-default);
+}
+
+/* h4/h5/1 - Semibold, 16px */
+.typography-h4-h5-semibold {
+	font-family: var(--font-family-primary);
+	font-size: var(--font-size-h4-h5);
+	font-weight: var(--font-weight-semibold);
+	line-height: 100%;
+	letter-spacing: var(--letter-spacing-default);
+}
+
+/* h4/h5/2 - Regular, 16px */
+.typography-h4-h5-regular {
+	font-family: var(--font-family-primary);
+	font-size: var(--font-size-h4-h5);
+	font-weight: var(--font-weight-regular);
+	line-height: var(--spacing-4);
+	letter-spacing: var(--letter-spacing-default);
+}
+
+/* citazione/desktop - Medium, 220px */
+.typography-citazione-desktop {
+	font-family: var(--font-family-font1);
+	font-size: var(--font-size-citazione-desktop);
+	font-weight: var(--font-weight-medium);
+	line-height: var(--line-height-citazione-desktop);
+	letter-spacing: var(--letter-spacing-default);
+}
+
+/* ========== SPACING UTILITIES ========== */
+.gap-spacing-5 {
+	gap: var(--spacing-5);
+}
+
+.gap-spacing-7 {
+	gap: var(--spacing-7);
+}
+
+.gap-spacing-8 {
+	gap: var(--spacing-8);
+}
+
+.px-spacing-9 {
+	padding-left: var(--spacing-9);
+	padding-right: var(--spacing-9);
+}
+
+.py-spacing-11 {
+	padding-top: var(--spacing-11);
+	padding-bottom: var(--spacing-11);
+}
+
+.py-spacing-12 {
+	padding-top: var(--spacing-12);
+	padding-bottom: var(--spacing-12);
+}
+
+.pb-spacing-11 {
+	padding-bottom: var(--spacing-11);
+}
+
+.pt-spacing-11 {
+	padding-top: var(--spacing-11);
+}
+
+/* ========== COLOR UTILITIES ========== */
+.text-content-primary {
+	color: var(--color-content-primary);
+}
+
+.text-content-secondary {
+	color: var(--color-content-secondary);
+}
+
+.bg-content-primary {
+	background-color: var(--color-content-primary);
+}
+
+.bg-background-primary {
+	background-color: var(--color-background-primary);
+}
+
+.bg-background-secondary {
+	background-color: var(--color-background-secondary);
+}
+
+.bg-filter-selected {
+	background-color: var(--color-filter-background-selected);
+	color: var(--color-filter-text-selected);
+}
+
+.bg-filter-default {
+	background-color: transparent;
+	color: var(--color-filter-text-default);
+}
+
+/* ========== RADIUS UTILITIES ========== */
+.rounded-full {
+	border-radius: var(--radius-full);
+}
+
+.rounded-m {
+	border-radius: var(--radius-m);
+}
+
+/* ========== CONTAINER QUERIES & MEDIA ========== */
+@media (max-width: 1024px) {
+	:root {
+		--font-size-citazione-desktop: 120px;
+		--line-height-citazione-desktop: 120px;
+	}
+}
+
+@media (max-width: 640px) {
+	:root {
+		--spacing-9: 24px;
+		--spacing-11: 80px;
+		--font-size-h2: 32px;
+		--font-size-citazione-desktop: 64px;
+		--line-height-citazione-desktop: 64px;
+	}
+}
