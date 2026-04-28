@@ -602,6 +602,438 @@
     @media (max-width: 1024px) {
         .portfolio-grid, .design-grid, .footer { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* =============================================
+       TABLET — max-width: 744px
+    ============================================= */
+    @media (max-width: 744px) {
+
+        /* NAVBAR */
+        .navbar {
+            padding: 12px 20px;
+        }
+        .navbar-brand { font-size: 13px; }
+        .navbar-link { font-size: 13px; }
+        .navbar-links { gap: 16px; }
+        .navbar-link:hover { color: inherit !important; }
+
+        /* HERO — titolo che occupa tutta la larghezza */
+        .main-title {
+            font-size: clamp(62px, 16.15vw, 132px);
+            padding-left: 0;
+            padding-right: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            letter-spacing: -0.03em;
+        }
+
+        /* SECTION descrizione */
+        .section {
+            padding: 40px 40px 48px;
+        }
+        .section-title {
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+        }
+        .section-description {
+            font-size: clamp(20px, 3.8vw, 30px);
+            line-height: 1.3;
+            max-width: 75%;
+            margin-bottom: 0;
+        }
+
+        /* PORTFOLIO GRID — 4 colonne compatte */
+        /* Griglia Portfolio */
+    .portfolio-grid {
+        display: flex;
+        /* Forza 2 colonne fisse da 148px */
+        grid-template-columns: repeat(2, 148px); 
+        /* Gap richiesto di 24px tra le card */
+        gap: 24px; 
+        /* Padding laterale di 40px come richiesto */
+        padding: 24px 40px; 
+        justify-content: start;
+    }
+
+    /* Immagini Portfolio */
+    .portfolio-card img {
+        width: 148px !important;
+        height: 196px !important;
+        object-fit: cover;
+        /* Se avevi un bordo o arrotondamento, mantienilo qui */
+    }
+
+    /* Testi Portfolio (Grandi come su Desktop) */
+    .portfolio-card-title {
+        /* Usiamo la variabile desktop, non rimpicciolirla */
+        font-size: var(--font-size-h3) !important;
+        /* Assicuriamoci che il titolo non superi la larghezza dell'immagine */
+        width: 148px;
+        white-space: normal;
+        margin-top: 8px;
+    }
+
+    
+        .portfolio-card-title { font-size: var(--font-size-h3); }
+        .portfolio-card:hover .portfolio-card-title {
+            color: var(--color-content-primary) !important;
+        }
+
+        
+
+
+        /* QUOTE — grande, 3/4 colonne da destra */
+      .quote-container {
+        grid-column: 2 / 5 !important;
+        display: flex;
+        justify-content: flex-end;
+        padding: 100px 0; /* Spazio verticale generoso come da design */
+        position: relative;
+        margin-right: 40px;
+    }
+
+    .section-quote {
+        /* Dimensioni dal tuo screenshot di Figma */
+        font-size: 80px !important; 
+        line-height: 0.9 !important; /* Molto compatto come in foto */
+        text-align: right;
+        font-weight: var(--font-weight-medium);
+        max-width: 100%;
+        position: relative;
+        display: inline-block;
+    }
+
+    /* --- POSIZIONAMENTI FRAME (DALLE TUE FOTO) --- */
+
+    .overlay-animation {
+        position: absolute;
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    /* 1. SCARABOCCHIO BLU (frame-1) */
+    .frame-1 { 
+        top: 100px !important;
+        left: -120px !important; /* Esce a sinistra rispetto al testo */
+        width: 320px !important;
+        transform: rotate(-5deg) !important;
+        transform: translateY(40%) !important; /* Spostamento più preciso */
+    }
+
+    /* 2. SCINTILLE GIALLE (frame-2) - Sopra "original" */
+
+    .frame-2 { 
+        position: absolute;
+        bottom: 100% !important;
+        left: 30% !important;
+        
+        /* Cambiamo translateX da 8% a un valore negativo (es. -15%) per portarlo a sinistra.
+           Manteniamo translateY(25px) per l'altezza e scale(2.8) per la dimensione. */
+        transform: translateX(-5%) translateY(25px) scale(2.8) !important;
+        
+        width: 400px !important;
+        min-width: 400px !important;
+        z-index: 10;
+        pointer-events: none;
+    }
+    /* 3. CROCE ROSSA (frame-3) - Sopra "world" */
+   .frame-3 { 
+        position: absolute;
+        /* Più a DESTRA: aumentiamo il valore negativo */
+        right: -350px !important; 
+        
+        /* Più in BASSO: portiamo top al 100% (fondo del testo) 
+           e usiamo un translateY meno aggressivo */
+        top: 80% !important;
+        transform: translateY(-80%) scale(1.6) !important;
+        
+        width: 180px !important;
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    /* 4. CERCHIO VERDE (frame-4) - Intorno a "most" */
+    .frame-4 { 
+        top: 20% !important;
+        left: 20% !important;
+        width: 300px !important;
+        transform: scale(3.5) !important;
+         transform: translateX(-20%) translateY(-20%) !important;
+    }
+
+
+        /* =============================================
+   TABLET — max-width: 744px
+============================================= */
+@media (max-width: 744px) {
+    /* ... altre regole esistenti ... */
+/* Update per Tablet e Mobile */
+@media (max-width: 744px), (max-width: 402px) {
+    .filters {
+        display: grid;
+        /* Due colonne basate sulla dimensione del contenuto (come su desktop) */
+        grid-template-columns: repeat(2, min-content); 
+        /* Allineamento a sinistra */
+        justify-content: start; 
+        /* Spazio tra le colonne (regola questo valore per la distanza orizzontale) */
+        column-gap: 60px; 
+        row-gap: 15px;
+        padding: 32px 40px 0;
+        overflow-x: visible;
+    }
+
+    .filter-button {
+        /* Ripristiniamo i valori del desktop */
+        font-size: var(--font-size-h3); 
+        font-weight: var(--font-weight-semibold);
+        padding: 10px 24px;
+        text-align: left;
+        white-space: nowrap;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        /* Rimuoviamo eventuali width: 100% o flex: 50% precedenti */
+        width: auto; 
+    }
+
+    .filter-button.active {
+        background-color: var(--color-filter-background-selected) !important;
+        color: var(--color-filter-text-selected) !important;
+        border-radius: var(--radius-full) !important;
+        /* Manteniamo il padding del desktop per la "pillola" */
+        padding: 10px 24px !important;
+        /* Allineamento perfetto del testo: 
+           usiamo un margine negativo per compensare il padding della pillola 
+           ed evitare che il testo 'salti' a destra quando selezionato */
+        margin-left: -24px;
+    }
+}
+}
+
+        /* QUOTE animation — overlay proporzionati al font tablet */
+        .frame-1 {
+            width: 90px !important;
+            top: 40px !important;
+            left: 6px !important;
+        }
+        .frame-2 {
+            width: 14vw !important;
+            min-width: 80px !important;
+            max-width: 140px !important;
+        }
+        .frame-3 {
+            width: 55px !important;
+            right: -14px !important;
+        }
+        .frame-4 {
+            width: 100% !important;
+        }
+
+        /* DESIGN GRID — 2 colonne, padding laterale 40px */
+        .design-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 56px 0;
+            padding: 40px 40px 64px;
+        }
+        /* Linea laterale sempre visibile su tablet (non solo hover) */
+        .design-card {
+            border-left: 2px solid var(--color-content-primary) !important;
+            padding: var(--spacing-4) 0;
+        }
+        .design-card-inner { padding: 0 20px; }
+        .design-card-title { font-size: 18px; }
+        .design-card-year { font-size: 18px; }
+        .design-card-description { font-size: 13px; line-height: 1.5; }
+        .design-card-category { font-size: 11px; }
+        /* Disabilita cambio colore hover su tablet */
+        .design-card:hover { border-left: 2px solid var(--color-content-primary) !important; }
+        .design-card:hover .design-card-title { color: var(--color-content-primary) !important; }
+        .design-card:hover .arrow-icon { opacity: 0 !important; }
+
+        .footer {
+            display: grid;
+            grid-template-columns: 1fr auto; /* Sinistra flessibile, destra compatta */
+            gap: 48px 40px;
+            padding: 60px 40px 40px;
+            border-top: 1px solid currentColor; /* L'unica linea in alto */
+            align-items: start;
+        }
+
+        /* Allineamento sezioni */
+        .footer-section:nth-child(1) { grid-column: 1; grid-row: 1; }
+        .credits-section { grid-column: 1; grid-row: 2; }
+        .contact-section { 
+            grid-column: 2; 
+            grid-row: 1 / 3; 
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        /* Copyright pulito senza bordi extra */
+        .copyright-row {
+            grid-column: 1 / -1; /* Occupa tutto lo spazio per l'allineamento */
+            text-align: right;
+            margin-top: 20px;
+            /* Rimuoviamo il bordo qui perché lo screenshot di Figma non lo mostrava doppio */
+        }
+
+        /* Dimensioni font precise */
+        .footer-section h2 {
+            font-size: 24px !important;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            white-space: nowrap;
+        }
+
+        .footer-section p, .footer-section a, .copyright-row p {
+            font-size: 14px !important;
+            line-height: 1.5;
+            margin: 0 0 4px 0;
+            text-decoration: none;
+        }
+
+        .footer-section a { display: block; }
+    
+    }
+
+    /* =============================================
+       MOBILE — max-width: 402px
+    ============================================= */
+    @media (max-width: 402px) {
+
+        /* NAVBAR */
+        .navbar {
+            padding: 10px 16px;
+        }
+        .navbar-brand { font-size: 11px; }
+        .navbar-link { font-size: 11px; }
+        .navbar-links { gap: 10px; }
+
+        /* HERO */
+        .main-title {
+            font-size: clamp(38px, 15.5vw, 66px);
+            padding-left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            letter-spacing: -0.03em;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 24px 16px 32px;
+        }
+        .section-title {
+            font-size: 10px;
+            margin-bottom: 14px;
+        }
+        .section-description {
+            font-size: clamp(15px, 4.5vw, 20px);
+            line-height: 1.35;
+            max-width: 100%;
+            margin-bottom: 0;
+        }
+
+        /* PORTFOLIO — 4 col molto compatte */
+        .portfolio-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            padding: 16px 10px;
+        }
+        .portfolio-card-title { font-size: 9px; }
+
+        /* QUOTE — occupa tutta la larghezza su mobile, da destra */
+        .quote-container {
+            padding: 40px 16px;
+            justify-content: flex-end;
+        }
+        .section-quote {
+            font-size: clamp(30px, 10vw, 48px);
+            line-height: 1.05;
+            max-width: 90%;
+            text-align: right;
+        }
+
+     
+.filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 20px 16px 0;
+    overflow-x: visible;
+}
+.filter-button {
+    width: 100%;
+    font-size: 13px;
+    font-weight: var(--font-weight-semibold);
+    padding: 12px 0;
+    text-align: left;
+    box-sizing: border-box;
+    border-radius: 0;
+    background-color: transparent;
+}
+/* Forza lo stato active anche su touch device */
+.filter-button.active,
+.filter-button.active:hover,
+.filter-button.active:focus {
+    background-color: var(--color-filter-background-selected) !important;
+    color: var(--color-filter-text-selected) !important;
+    border-radius: var(--radius-full) !important;
+    padding: 12px 16px !important;
+}
+
+
+        /* DESIGN GRID — 1 colonna su mobile, padding 24px */
+        .design-grid {
+            grid-template-columns: 1fr;
+            gap: 48px;
+            padding: 32px 24px 48px;
+        }
+        /* Linea laterale sempre visibile su mobile */
+        .design-card {
+            border-left: 2px solid var(--color-content-primary) !important;
+            padding: var(--spacing-3) 0;
+        }
+        .design-card-inner { padding: 0 16px; }
+        .design-card-title { font-size: 18px; }
+        .design-card-year { font-size: 18px; }
+        .design-card-description { font-size: 13px; line-height: 1.5; }
+        .design-card-category { font-size: 11px; }
+        .design-card:hover { border-left: 2px solid var(--color-content-primary) !important; }
+        .design-card:hover .design-card-title { color: var(--color-content-primary) !important; }
+        .design-card:hover .arrow-icon { opacity: 0 !important; }
+
+        /* FOOTER — 1 colonna su mobile */
+        .footer {
+            grid-template-columns: 1fr;
+            gap: 32px;
+            padding: 32px 24px 0;
+        }
+        .footer-section:nth-child(1) { grid-column: 1; }
+        .footer-section:nth-child(2) { grid-column: 1; display: flex; flex-direction: column; }
+        .footer-section:nth-child(3) { grid-column: 1; }
+        .footer > div[style] {
+            grid-column: 1 / -1;
+            padding-top: 24px;
+            padding-bottom: 32px;
+        }
+        .footer-section h2 {
+            font-size: 22px;
+            font-weight: var(--font-weight-medium);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .footer-section p {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .footer-section a {
+            word-break: break-all;
+            font-size: 13px;
+        }
+    }
 </style>
 
 <div class="container"> 
@@ -718,32 +1150,35 @@
     {/each}
 </div>
 
-        <footer class="footer">
-        <div class="footer-section">
-            <h2>Laboratorio di Web<br />e Digital Design</h2>
-            <p>Design della Comunicazione<br />Politecnico di Milano</p>
-            <p>Prof. Umberto Tolino<br />Prof. Christian Mazzoleni</p>
-        </div>
-        <div class="footer-section">
-            <h2>Let's get<br />in Touch</h2>
-            <p>
-                Greta Franco<br />
-                <a href="mailto:greta.franco@mail.polimi.it">greta.franco@mail.polimi.it</a><br />
-                <a href="https://www.instagram.com/gretafranco.design/" target="_blank">@gretafranco.design</a>
-            </p>
-        </div>
-        <div class="footer-section">
-            <h2>Project's<br />Credits</h2>
-            <p>
-                Gaetano Pesce<br />
-                <a href="https://www.corsidesign.it/gaetano-pesce">https://www.corsidesign.it/gaetano-pesce</a><br />
-                <a href="https://shop.mohd.it/en">https://shop.mohd.it/en</a><br />
-                All images belong to their respective owners.
-            </p>
-        </div>
-        <div style="grid-column: 1 / -1; border-top: 1px solid currentColor; padding-top: var(--spacing-5);">
-            <p style="margin: 0; font-size: var(--font-size-h4);">© 2026 Greta Franco · All rights reserved</p>
-            <p style="margin: 0; font-size: var(--font-size-h4);">Progetto realizzato per Laboratorio di Web & Digital Design — PoliMi</p>
-        </div>
-    </footer>
+       <footer class="footer">
+    <div class="footer-section">
+        <h2>Laboratorio di Web<br />e Digital Design</h2>
+        <p>Design della Comunicazione<br />Politecnico di Milano</p>
+        <p>Prof. Umberto Tolino<br />Prof. Christian Mazzoleni</p>
+    </div>
+    
+    <div class="footer-section contact-section">
+        <h2>Let's get<br />in Touch</h2>
+        <p>
+            Greta Franco<br />
+            <a href="mailto:greta.franco@mail.polimi.it">greta.franco@mail.polimi.it</a><br />
+            <a href="https://www.instagram.com/gretafranco.design/" target="_blank">@gretafranco.design</a>
+        </p>
+    </div>
+
+    <div class="footer-section credits-section">
+        <h2>Project's<br />Credits</h2>
+        <p>
+            Gaetano Pesce<br />
+            <a href="https://www.corsidesign.it/gaetano-pesce">https://www.corsidesign.it/gaetano-pesce</a><br />
+            <a href="https://shop.mohd.it/en">https://shop.mohd.it/en</a><br />
+            All images belong to their respective owners.
+        </p>
+    </div>
+
+    <div class="copyright-row">
+        <p>© 2026 Greta Franco · All rights reserved</p>
+        <p>Progetto realizzato per Laboratorio di Web & Digital Design — PoliMi</p>
+    </div>
+</footer>
 </div>
