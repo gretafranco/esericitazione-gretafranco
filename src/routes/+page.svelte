@@ -608,14 +608,32 @@
     ============================================= */
     @media (max-width: 744px) {
 
-        /* NAVBAR */
-        .navbar {
-            padding: 12px 20px;
-        }
-        .navbar-brand { font-size: 13px; }
-        .navbar-link { font-size: 13px; }
-        .navbar-links { gap: 16px; }
-        .navbar-link:hover { color: inherit !important; }
+      /* NAVBAR */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* Padding: sopra/sotto (var spacing-5) e 40px ai lati */
+        padding: var(--spacing-5) 40px; 
+    }
+
+    .navbar-brand {
+        font-size: var(--font-size-h3);
+        font-weight: var(--font-weight-semibold);
+    }
+
+    .navbar-links {
+        display: flex;
+        gap: var(--spacing-5);
+    }
+
+    /* NAVBAR LINKS AGGIORNATI */
+    .navbar-link {
+        text-decoration: none;
+        color: inherit;
+        font-size: var(--font-size-h3);
+        transition: color 0.3s ease;
+    }
 
         /* HERO — titolo che occupa tutta la larghezza */
         .main-title {
@@ -631,11 +649,15 @@
         .section {
             padding: 40px 40px 48px;
         }
-        .section-title {
-            font-size: 12px;
-            letter-spacing: 0.05em;
-            margin-bottom: 20px;
-        }
+       .section-title {
+        font-size: var(--font-size-h3);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-content-primary);
+        margin-bottom: var(--spacing-5);
+        text-transform: uppercase;
+        letter-spacing: var(--letter-spacing-default);
+    }
+
         .section-description {
             font-size: clamp(20px, 3.8vw, 30px);
             line-height: 1.3;
@@ -772,41 +794,45 @@
 @media (max-width: 744px), (max-width: 402px) {
     .filters {
         display: grid;
-        /* Due colonne basate sulla dimensione del contenuto (come su desktop) */
-        grid-template-columns: repeat(2, min-content); 
-        /* Allineamento a sinistra */
+        /* Due colonne che si adattano al contenuto */
+        grid-template-columns: auto auto; 
+        /* Allineamento a sinistra della griglia */
         justify-content: start; 
-        /* Spazio tra le colonne (regola questo valore per la distanza orizzontale) */
-        column-gap: 60px; 
-        row-gap: 15px;
-        padding: 32px 40px 0;
-        overflow-x: visible;
+        /* Spazio orizzontale tra le due colonne e verticale tra le righe */
+        column-gap: 0px; 
+        row-gap: 0px;
+        /* Padding laterale di 40px come la navbar */
+        padding: 40px 40px 0;
     }
 
     .filter-button {
-        /* Ripristiniamo i valori del desktop */
-        font-size: var(--font-size-h3); 
-        font-weight: var(--font-weight-semibold);
+        /* Reset e stili dal desktop */
         padding: 10px 24px;
-        text-align: left;
-        white-space: nowrap;
-        background-color: transparent;
+        border-radius: var(--radius-full);
         border: none;
         cursor: pointer;
-        /* Rimuoviamo eventuali width: 100% o flex: 50% precedenti */
-        width: auto; 
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-h3);
+        font-weight: var(--font-weight-semibold);
+        text-transform: uppercase;
+        background-color: transparent;
+        transition: all 0.2s ease;
+        
+        /* Forza il pulsante a essere grande quanto il suo testo */
+        width: max-content;
+        /* Allineamento testo al centro della pillola */
+        text-align: center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .filter-button.active {
+        /* Colori desktop */
         background-color: var(--color-filter-background-selected) !important;
         color: var(--color-filter-text-selected) !important;
-        border-radius: var(--radius-full) !important;
-        /* Manteniamo il padding del desktop per la "pillola" */
-        padding: 10px 24px !important;
-        /* Allineamento perfetto del testo: 
-           usiamo un margine negativo per compensare il padding della pillola 
-           ed evitare che il testo 'salti' a destra quando selezionato */
-        margin-left: -24px;
+        /* Rimuoviamo il margine negativo che causava il decentramento */
+        margin-left: 0; 
     }
 }
 }
@@ -851,189 +877,330 @@
         .design-card:hover .design-card-title { color: var(--color-content-primary) !important; }
         .design-card:hover .arrow-icon { opacity: 0 !important; }
 
-        .footer {
-            display: grid;
-            grid-template-columns: 1fr auto; /* Sinistra flessibile, destra compatta */
-            gap: 48px 40px;
-            padding: 60px 40px 40px;
-            border-top: 1px solid currentColor; /* L'unica linea in alto */
-            align-items: start;
-        }
+/* ========== FOOTER ========== */
+.footer {
+    padding: 80px 40px 40px;
+}
 
-        /* Allineamento sezioni */
-        .footer-section:nth-child(1) { grid-column: 1; grid-row: 1; }
-        .credits-section { grid-column: 1; grid-row: 2; }
-        .contact-section { 
-            grid-column: 2; 
-            grid-row: 1 / 3; 
-            text-align: right;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
 
-        /* Copyright pulito senza bordi extra */
-        .copyright-row {
-            grid-column: 1 / -1; /* Occupa tutto lo spazio per l'allineamento */
-            text-align: right;
-            margin-top: 20px;
-            /* Rimuoviamo il bordo qui perché lo screenshot di Figma non lo mostrava doppio */
-        }
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
 
-        /* Dimensioni font precise */
-        .footer-section h2 {
-            font-size: 24px !important;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            white-space: nowrap;
-        }
+/* Titoli Footer: 24px / 26px */
+.footer-section h2 {
+    font-size: 24px !important;
+    line-height: 26px !important;
+    margin: 0 0 24px 0;
+    font-weight: var(--font-weight-medium);
+}
 
-        .footer-section p, .footer-section a, .copyright-row p {
-            font-size: 14px !important;
-            line-height: 1.5;
-            margin: 0 0 4px 0;
-            text-decoration: none;
-        }
+/* Testi Footer: 18px / 20px */
+.footer-section p {
+    font-size: 18px !important;
+    line-height: 20px !important;
+    margin: 0 0 4px 0;
+     text-align: left;
+}
 
-        .footer-section a { display: block; }
+.footer-section a {
+    font-size: 18px !important;
+    line-height: 20px !important;
+    color: var(--color-content-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+    
+}
+
+/* Contact section allineata a DESTRA */
+.contact-section {
+    text-align: left;
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Copyright: 12px / 14px */
+.copyright-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 16px;
+    margin-top: 40px;
+}
+
+.copyright-row p {
+    font-size: 12px !important;
+    line-height: 14px !important;
+    margin: 0;
+}
+
     
     }
 
-    /* =============================================
+   
+        /* =============================================
        MOBILE — max-width: 402px
     ============================================= */
     @media (max-width: 402px) {
-
-        /* NAVBAR */
+        
+        /* NAVBAR — hamburger menu */
         .navbar {
-            padding: 10px 16px;
+            padding: var(--spacing-5) 20px;
         }
-        .navbar-brand { font-size: 11px; }
-        .navbar-link { font-size: 11px; }
-        .navbar-links { gap: 10px; }
+        
+        .navbar-brand {
+            font-size: 14px;
+            font-weight: var(--font-weight-semibold);
+        }
+        
+        .navbar-links {
+            display: none; /* Nascondi i link, mostra hamburger */
+        }
 
-        /* HERO */
+        /* HERO — titolo ridimensionato */
         .main-title {
-            font-size: clamp(38px, 15.5vw, 66px);
+            font-size: clamp(48px, 16.2vw, 96px);
+            margin-top: -0.3em;
             padding-left: 0;
             white-space: nowrap;
-            overflow: hidden;
-            letter-spacing: -0.03em;
         }
 
-        /* SECTION */
+        /* SECTION — padding ridotto */
         .section {
-            padding: 24px 16px 32px;
+            padding: 32px 20px 40px;
         }
+        
         .section-title {
-            font-size: 10px;
-            margin-bottom: 14px;
-        }
-        .section-description {
-            font-size: clamp(15px, 4.5vw, 20px);
-            line-height: 1.35;
-            max-width: 100%;
-            margin-bottom: 0;
-        }
-
-        /* PORTFOLIO — 4 col molto compatte */
-        .portfolio-grid {
-            grid-template-columns: repeat(4, 1fr);
-            gap: 6px;
-            padding: 16px 10px;
-        }
-        .portfolio-card-title { font-size: 9px; }
-
-        /* QUOTE — occupa tutta la larghezza su mobile, da destra */
-        .quote-container {
-            padding: 40px 16px;
-            justify-content: flex-end;
-        }
-        .section-quote {
-            font-size: clamp(30px, 10vw, 48px);
-            line-height: 1.05;
-            max-width: 90%;
-            text-align: right;
-        }
-
-     
-.filters {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    padding: 20px 16px 0;
-    overflow-x: visible;
-}
-.filter-button {
-    width: 100%;
-    font-size: 13px;
-    font-weight: var(--font-weight-semibold);
-    padding: 12px 0;
-    text-align: left;
-    box-sizing: border-box;
-    border-radius: 0;
-    background-color: transparent;
-}
-/* Forza lo stato active anche su touch device */
-.filter-button.active,
-.filter-button.active:hover,
-.filter-button.active:focus {
-    background-color: var(--color-filter-background-selected) !important;
-    color: var(--color-filter-text-selected) !important;
-    border-radius: var(--radius-full) !important;
-    padding: 12px 16px !important;
-}
-
-
-        /* DESIGN GRID — 1 colonna su mobile, padding 24px */
-        .design-grid {
-            grid-template-columns: 1fr;
-            gap: 48px;
-            padding: 32px 24px 48px;
-        }
-        /* Linea laterale sempre visibile su mobile */
-        .design-card {
-            border-left: 2px solid var(--color-content-primary) !important;
-            padding: var(--spacing-3) 0;
-        }
-        .design-card-inner { padding: 0 16px; }
-        .design-card-title { font-size: 18px; }
-        .design-card-year { font-size: 18px; }
-        .design-card-description { font-size: 13px; line-height: 1.5; }
-        .design-card-category { font-size: 11px; }
-        .design-card:hover { border-left: 2px solid var(--color-content-primary) !important; }
-        .design-card:hover .design-card-title { color: var(--color-content-primary) !important; }
-        .design-card:hover .arrow-icon { opacity: 0 !important; }
-
-        /* FOOTER — 1 colonna su mobile */
-        .footer {
-            grid-template-columns: 1fr;
-            gap: 32px;
-            padding: 32px 24px 0;
-        }
-        .footer-section:nth-child(1) { grid-column: 1; }
-        .footer-section:nth-child(2) { grid-column: 1; display: flex; flex-direction: column; }
-        .footer-section:nth-child(3) { grid-column: 1; }
-        .footer > div[style] {
-            grid-column: 1 / -1;
-            padding-top: 24px;
-            padding-bottom: 32px;
-        }
-        .footer-section h2 {
-            font-size: 22px;
-            font-weight: var(--font-weight-medium);
-            line-height: 1.2;
+            font-size: 14px;
             margin-bottom: 16px;
         }
+        
+                .section-description {
+            font-size: 18px !important;
+            line-height: 20px !important;
+            max-width: 75%; /* 3 colonne su 4, occupa il 75% dello schermo */
+            margin-bottom: 24px; /* Spazio aggiuntivo sotto se necessario */
+        }
+
+        /* PORTFOLIO GRID — 2 colonne più compatte */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            padding: 20px;
+        }
+        
+        .portfolio-card img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 378 / 500;
+        }
+        
+        .portfolio-card-title {
+            font-size: 14px !important;
+            width: 100%;
+        }
+
+       /* QUOTE — ridimensionata e allineata a destra come il tablet */
+        .quote-container {
+            padding: 60px 0; /* Ridotto da 100px */
+            margin-right: 20px; /* Ridotto da 40px */
+            display: flex;
+            justify-content: flex-end; /* Mantiene allineamento destra */
+        }
+
+        .section-quote {
+            font-size: 42px !important; /* Scalato da 80px */
+            line-height: 0.95 !important; /* Leggermente più alto per leggibilità */
+            text-align: right; /* Mantiene allineamento destra */
+            font-weight: var(--font-weight-medium);
+            max-width: 100%;
+        }
+
+        .overlay-animation {
+            position: absolute;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* 1. SCARABOCCHIO BLU (frame-1) - Scalato */
+      .frame-1 { 
+    top: 25px !important; /* Più in alto (era 50px) */
+    left: -10px !important; /* Leggermente più verso il centro per compensare il rimpicciolimento */
+    width: 70px !important; /* Più piccolo (era 160px) */
+    transform: rotate(-5deg) translateY(0%) !important;
+}
+        /* 2. SCINTILLE GIALLE (frame-2) - Scalato */
+      .frame-2 { 
+    position: absolute;
+    bottom: 100% !important;
+    left: 10% !important; /* Spostato da 30% a 10% per andare a sinistra */
+    
+    /* translateY negativo (-15px) per salire più in alto */
+    transform: translateX(-15%) translateY(5px) scale(1.2) !important;
+    
+    width: 200px !important; 
+    min-width: 140px !important;
+}
+
+        /* 3. CROCE ROSSA (frame-3) - Scalato e riposizionato per non sparire */
+      .frame-3 { 
+    position: absolute;
+    right: -120px !important; /* Più a destra (da -80px a -120px) */
+    
+    top: 95% !important;      /* Più in basso (da 80% a 95%) */
+    
+    /* translateY ridotto da -80% a -40%: tira meno in alto, 
+       quindi l'elemento scende visivamente */
+    transform: translateY(-70%) scale(0.7) !important;
+    
+    width: 70px !important; 
+}
+
+        /* 4. CERCHIO VERDE (frame-4) - Scalato */
+     .frame-4 { 
+    top: 20% !important;
+    left: 20% !important;
+    width: 40px !important; /* Ridotto ulteriormente (da 80px a 40px) */
+    transform: translateX(-30%) translateY(-20%) scale(0.8) !important; 
+}
+
+
+        /* FILTERS — layout verticale o wrap */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 20px 20px 0;
+            justify-content: flex-start;
+        }
+        
+        .filter-button {
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+
+        /* DESIGN GRID — singola colonna */
+        .design-grid {
+            grid-template-columns: 1fr;
+            gap: 40px 0;
+            padding: 32px 20px 48px;
+        }
+        
+        .design-card {
+            border-left: 2px solid var(--color-content-primary) !important;
+            padding: 0;
+        }
+        
+        .design-card-inner {
+            padding: 0 16px;
+        }
+        
+        .design-card-title {
+            font-size: 18px;
+        }
+        
+        .design-card-year {
+            font-size: 16px;
+        }
+        
+        .design-card-description {
+            font-size: 14px;
+            line-height: 1.5;
+            padding-right: 0;
+        }
+        
+        
+        .design-card-image {
+            margin-top: 16px;
+        }
+        
+        .arrow-icon {
+            display: none; /* Nascondi freccia su mobile */
+        }
+
+        /* FOOTER — layout verticale */
+    
+        /* ========== FOOTER MOBILE ========== */
+        .footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px 24px;
+            padding: 60px 20px 32px;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        /* Titoli Footer: 18px / 20px */
+        .footer-section h2 {
+            font-size: 18px !important;
+            line-height: 20px !important;
+            margin: 0 0 16px 0;
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* Testi Footer: 12px / 14px */
         .footer-section p {
-            font-size: 13px;
-            line-height: 1.6;
+            font-size: 12px !important;
+            line-height: 14px !important;
+            margin: 0 0 4px 0;
+            text-align: left;
         }
+
         .footer-section a {
-            word-break: break-all;
-            font-size: 13px;
+            font-size: 12px !important;
+            line-height: 14px !important;
+            color: var(--color-content-primary);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.2s ease;
         }
+
+        /* Laboratorio section - colonna sinistra */
+        .footer-section:first-child {
+            grid-column: 1;
+        }
+
+        /* Contact section - colonna destra */
+        .contact-section {
+            grid-column: 2;
+            text-align: left;
+            align-items: flex-start;
+        }
+
+        /* Credits section - colonna sinistra, sotto Laboratorio */
+        .credits-section {
+            grid-column: 1;
+        }
+
+        /* Copyright - colonna destra, sotto Contact */
+        .copyright-row {
+            grid-column: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            padding-top: 12px;
+            margin-top: auto;
+            justify-self: end;
+        }
+
+        .copyright-row p {
+            font-size: 10px !important;
+            line-height: 12px !important;
+            margin: 0;
+        }
+    
     }
+    
 </style>
 
 <div class="container"> 
@@ -1044,6 +1211,8 @@
             <a href="#contact" class="navbar-link">@gretafranco.design</a>
         </div>
     </nav>
+
+    
 
     <section class="hero-section">
         <img src={imgHero} alt="Gaetano Pesce Hero" />
