@@ -9,6 +9,17 @@
     import croceRossa from '$lib/assets/croce-rossa.svg';
     import cerchioVerde from '$lib/assets/cerchio-verde.svg';
 
+    /* --- LOGICA MENU HAMBURGER (mobile) --- */
+    let menuOpen = $state(false);
+
+    function toggleMenu() {
+        menuOpen = !menuOpen;
+    }
+
+    function closeMenu() {
+        menuOpen = false;
+    }
+
     /* --- LOGICA FILTRI (Svelte 5) --- */
     let activeFilter = $state('ALL WORKS');
 
@@ -253,6 +264,68 @@
 
     .navbar-link:hover {
         color: #f6392b; /* Il rosso Gaetano Pesce */
+    }
+
+    /* HAMBURGER BUTTON — nascosto di default, visibile solo su mobile ≤402px */
+    .hamburger-btn {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        color: var(--color-content-primary);
+        line-height: 0;
+    }
+
+    /* MOBILE MENU OVERLAY */
+    .mobile-menu-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background-color: var(--color-background-primary);
+        z-index: 100;
+        flex-direction: column;
+    }
+
+    .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        padding: 120px 40px 40px;
+        gap: 32px;
+    }
+
+    .mobile-menu-link {
+        text-decoration: none;
+        color: var(--color-content-primary);
+        font-family: var(--font-family-primary);
+        font-size: clamp(28px, 8vw, 40px);
+        font-weight: var(--font-weight-semibold);
+        text-transform: uppercase;
+        letter-spacing: var(--letter-spacing-default);
+        transition: color 0.2s ease;
+        border-bottom: 1px solid var(--color-content-primary);
+        padding-bottom: 16px;
+    }
+
+    .mobile-menu-link:hover {
+        color: #f6392b;
+    }
+
+    /* Attivazione su mobile ≤402px */
+    @media (max-width: 402px) {
+        .hamburger-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-links {
+            display: none;
+        }
+
+        .mobile-menu-overlay {
+            display: flex;
+        }
     }
 	    /* SECTIONS */
     .section {
@@ -1210,7 +1283,36 @@
             <a href="#archive" class="navbar-link">ARCHIVIO</a>
             <a href="#contact" class="navbar-link">@gretafranco.design</a>
         </div>
+        <!-- Hamburger button: visibile solo su mobile max-width 402px -->
+        <button class="hamburger-btn" on:click={toggleMenu} aria-label="Apri menu">
+            {#if menuOpen}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="20" y1="4" x2="4" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            {:else}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            {/if}
+        </button>
     </nav>
+
+    <!-- Menu overlay mobile (visibile solo su max-width 402px) -->
+    {#if menuOpen}
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <div class="mobile-menu-overlay" on:click={closeMenu}>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <nav class="mobile-menu" on:click|stopPropagation>
+                <a href="#archive" class="mobile-menu-link" on:click={closeMenu}>ARCHIVIO</a>
+                <a href="#contact" class="mobile-menu-link" on:click={closeMenu}>@gretafranco.design</a>
+            </nav>
+        </div>
+    {/if}
 
     
 
